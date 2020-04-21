@@ -1,13 +1,13 @@
 """
 Juan Pablo Vasco y Laura Lopera 
 """
-from Modelo import Biosenal
+from modelo import Biosenal
 from interfaz import InterfazGrafico
 import sys
 from PyQt5.QtWidgets import QApplication
 
 class Principal(object):
-    def __init__(self):        
+    def __init__(self):
         self.__app=QApplication(sys.argv)
         self.__mi_vista=InterfazGrafico()
         self.__mi_biosenal=Biosenal()
@@ -16,7 +16,7 @@ class Principal(object):
     def main(self):
         self.__mi_vista.show()
         sys.exit(self.__app.exec_())
-    
+
 class Coordinador(object):
     def __init__(self,vista,biosenal):
         self.__mi_vista=vista
@@ -28,6 +28,8 @@ class Coordinador(object):
         return self.__mi_biosenal.devolver_segmento(x_min,x_max)
     def escalarSenal(self,x_min,x_max,escala):
         return self.__mi_biosenal.escalar_senal(x_min,x_max,escala)
+    def calcularWavelet(self,x,fmin,fmax,fs):
+        return self.__mi_biosenal.calcularWavelet(x,fmin,fmax,fs)
     def graficar_canal(self,canal):
         return self.graficar_canal(canal)
     def filtrar(self, senal, tipo_umbral, umbral, ponderado):
